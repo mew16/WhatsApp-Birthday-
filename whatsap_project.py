@@ -4,6 +4,7 @@ import time
 import pywhatkit as pw
 today = date.today()
 d1 = today.strftime("%d/%m/%Y")
+//path for your csv file(name,date like 30/08 without year,message,phone number)
 data = pd.read_csv("C:/Users/Mew/Desktop/birthday.csv")
 uzunluk = len(data["Tarih"])
 counter = 0
@@ -13,6 +14,7 @@ for i in range(0,uzunluk):
     if data.iloc[i,1] == d1[0:5]:
         in_counter += 1
         phone_number = data.iloc[i,3]
+        //in +90 you can write your own country code
         pw.sendwhatmsg_instantly(f"+90{phone_number}",data.iloc[i,2],tab_close = True,wait_time = 7)
         who_sended.append(data.iloc[i,0])
         continue
